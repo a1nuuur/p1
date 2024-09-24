@@ -31,7 +31,7 @@ export default {
       return (this.part.price + subpartsCost) * this.part.quantity;
     },
     partNameWithParent() {
-      return this.parent ? `${this.parent} -> ${this.part.name}` : this.part.name;
+      return this.parent ? `${this.part.name}` : this.part.name;
     }
   },
   methods: {

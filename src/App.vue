@@ -31,43 +31,111 @@ export default {
   data() {
     return {
       carParts: {
-        name: "Кузов",
+        name: "1.Кузов",
         price: 12000,
         quantity: 0,
         subparts: [
           {
-            name: "Двери",
-            price: 11000,
+            name: "1.1.Двери",
+            price: 17000,
             quantity: 0,
             subparts: [
               {
-                name: "Замок",
+                name: "1.2.Замок",
                 price: 5000,
                 quantity: 0,
                 subparts: []
               },
               {
-                name: "Ручки",
+                name: "1.3.Ручки",
                 price: 6000,
+                quantity: 0,
+                subparts: []
+              },
+              {
+                name: "1.4.Стекло",
+                price: 4000,
+                quantity: 0,
+                subparts: []
+              },
+              {
+                name: "1.5.Зеркала",
+                price: 2000,
                 quantity: 0,
                 subparts: []
               }
             ]
           },
           {
-            name: "Двигатель",
-            price: 12000,
+            name: "2.Двигатель",
+            price: 18000,
             quantity: 0,
             subparts: [
               {
-                name: "Поршни",
+                name: "2.2.Поршни",
                 price: 10000,
                 quantity: 0,
                 subparts: []
               },
               {
-                name: "Кольца",
+                name: "2.3.Кольца",
                 price: 2000,
+                quantity: 0,
+                subparts: []
+              },
+              {
+                name: "2.4.Цилиндр",
+                price: 2000,
+                quantity: 0,
+                subparts: []
+              },
+              {
+                name: "2.5.Свеча",
+                price: 2000,
+                quantity: 0,
+                subparts: []
+              },
+              {
+                name: "2.6.Стартер",
+                price: 2000,
+                quantity: 0,
+                subparts: []
+              }
+            ]
+          },
+          {
+            name: "3.Шины Японские",
+            price: 5000,
+            quantity: 0,
+            subparts: [
+              {
+                name: "3.1.Зима",
+                price: 2500,
+                quantity: 0,
+                subparts: []
+              },
+              {
+                name: "3.2.Лето",
+                price: 2500,
+                quantity: 0,
+                subparts: []
+              }
+            ]
+          },
+          {
+            name: "4.Шины Немецкие",
+            price: 5000,
+            quantity: 0,
+            subparts: [
+              {
+                name: "4.1.Зима",
+                price: 2500,
+                quantity: 0,
+                subparts: []
+              },
+              {
+                name: "4.2.Лето",
+                price: 2500,
                 quantity: 0,
                 subparts: []
               }
