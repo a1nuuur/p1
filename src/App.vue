@@ -15,7 +15,27 @@
       <car-part :part="carParts" />
       </tbody>
     </table>
+
+    <button @click="showModal = true">Добавить новую деталь</button>
+
     <button @click="exportToExcel">Экспорт в Excel</button>
+
+    <!-- Модальное окно -->
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="showModal = false">&times;</span>
+        <h2>Добавить новую деталь</h2>
+        <form @submit.prevent="addCarPart">
+          <label for="name">Название:</label>
+          <input v-model="newPart.name" type="text" id="name" required />
+
+          <label for="price">Цена:</label>
+          <input v-model.number="newPart.price" type="number" id="price" required />
+
+          <button type="submit">Добавить</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -142,10 +162,26 @@ export default {
             ]
           }
         ]
-      }
+      },
+      newPart: {
+        name: "",
+        price: 0,
+        quantity: 0,
+        subparts: []
+      },
+      showModal: false
     };
   },
   methods: {
+    addCarPart() {
+      if (this.newPart.name && this.newPart.price > 0 && this.newPart.quantity >= 0) {
+        this.carParts.subparts.push({ ...this.newPart });
+        this.newPart.name = "";
+        this.newPart.price = 0;
+        this.newPart.quantity = 0;
+        this.showModal = false; // Закрыть модальное окно после добавления
+      }
+    },
     exportToExcel() {
       const exportData = this.convertToExport(this.carParts);
       const ws = XLSX.utils.json_to_sheet(exportData);
@@ -192,5 +228,50 @@ th {
 }
 button {
   margin: 5px;
+}
+form {
+  margin-top: 20px;
+}
+form label {
+  display: block;
+  margin: 5px 0;
+}
+form input {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+/* Стили для модального окна */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
